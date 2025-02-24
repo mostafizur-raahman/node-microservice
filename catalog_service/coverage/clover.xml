@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1740380223527" clover="3.2.0">
-  <project timestamp="1740380223527" name="All files">
-    <metrics statements="56" coveredstatements="50" conditionals="9" coveredconditionals="9" methods="11" coveredmethods="6" elements="76" coveredelements="65" complexity="0" loc="56" ncloc="56" packages="2" files="2" classes="2"/>
+<coverage generated="1740391260663" clover="3.2.0">
+  <project timestamp="1740391260663" name="All files">
+    <metrics statements="59" coveredstatements="53" conditionals="12" coveredconditionals="12" methods="11" coveredmethods="7" elements="82" coveredelements="72" complexity="0" loc="59" ncloc="59" packages="2" files="2" classes="2"/>
     <package name="repository">
       <metrics statements="25" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="2"/>
       <file name="mockCatalog.repository.ts" path="/home/mostafiz/own/node/node-microservices/catalog_service/src/repository/mockCatalog.repository.ts">
@@ -34,16 +34,16 @@
       </file>
     </package>
     <package name="services">
-      <metrics statements="31" coveredstatements="31" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="4"/>
+      <metrics statements="34" coveredstatements="34" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="5"/>
       <file name="catalog.service.ts" path="/home/mostafiz/own/node/node-microservices/catalog_service/src/services/catalog.service.ts">
-        <metrics statements="31" coveredstatements="31" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="4"/>
+        <metrics statements="34" coveredstatements="34" conditionals="10" coveredconditionals="10" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="7" count="6" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="3" type="stmt"/>
         <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -61,13 +61,16 @@
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="30" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
   </project>

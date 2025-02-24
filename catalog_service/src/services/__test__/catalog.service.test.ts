@@ -113,9 +113,9 @@ describe("catalogService", () => {
         });
     });
 
-    // run the test for get product
+    // run the test for get products
     describe("getProducts", () => {
-        test("should get products bu offset and limit", async () => {
+        test("should get products with offset and limit", async () => {
             const service = new CatalogService(repository);
             const randomLimit = faker.number.int({ min: 10, max: 100 });
 
@@ -129,6 +129,49 @@ describe("catalogService", () => {
             expect(result.length).toEqual(randomLimit);
 
             expect(result).toMatchObject(products);
+        });
+
+        test("should throw an error with products does not exist", async () => {
+            const service = new CatalogService(repository);
+
+            jest.spyOn(repository, "find").mockImplementationOnce(() =>
+                Promise.reject(new Error("products does not exist"))
+            );
+
+            await expect(service.getProductList(0, 0)).rejects.toThrow(
+                "products does not exist"
+            );
+        });
+    });
+
+    // run the test for get product
+    describe("getProduct", () => {
+        test("should get product by id", async () => {
+            const service = new CatalogService(repository);
+
+            const product = productFactory.build();
+
+            jest.spyOn(repository, "findOne").mockImplementationOnce(() =>
+                Promise.resolve(product)
+            );
+
+            const result = await service.getProduct(product.id!);
+
+            expect(result).toMatchObject(product);
+        });
+        test("should throw an error with products does not exist", async () => {
+            const service = new CatalogService(repository);
+            const product = mockProduct({
+                id: faker.number.int({ min: 10, max: 1000 }),
+            });
+
+            jest.spyOn(repository, "findOne").mockImplementationOnce(() =>
+                Promise.reject(new Error("product does not exist"))
+            );
+
+            await expect(service.getProduct(product.id)).rejects.toThrow(
+                "product does not exist"
+            );
         });
     });
 });
