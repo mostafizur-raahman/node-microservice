@@ -1,8 +1,16 @@
 import { faker } from "@faker-js/faker";
+import { Factory } from "rosie";
 import { ICatalogRepository } from "../../interface/catalogRepository.interface";
 import { Product } from "../../models/product.model";
 import { MockCatalogRepository } from "../../repository/mockCatalog.repository";
 import { CatalogService } from "../catalog.service";
+
+const productFactory = new Factory<Product>()
+    .attr("id", faker.number.int({ min: 1, max: 1000 }))
+    .attr("name", faker.commerce.productName())
+    .attr("description", faker.commerce.productDescription())
+    .attr("stock", faker.number.int({ min: 1, max: 1000 }))
+    .attr("price", +faker.number.int());
 
 const mockProduct = (rest: any) => {
     return {
@@ -78,7 +86,6 @@ describe("catalogService", () => {
     });
 
     // run the test for update rpoduct
-
     describe("updateProduct", () => {
         test("should update product", async () => {
             const service = new CatalogService(repository);
@@ -103,6 +110,25 @@ describe("catalogService", () => {
             await expect(service.updateProduct({})).rejects.toThrow(
                 "product does not exist"
             );
+        });
+    });
+
+    // run the test for get product
+    describe("getProducts", () => {
+        test("should get products bu offset and limit", async () => {
+            const service = new CatalogService(repository);
+            const randomLimit = faker.number.int({ min: 10, max: 100 });
+
+            const products = productFactory.buildList(randomLimit);
+
+            jest.spyOn(repository, "find").mockImplementationOnce(() =>
+                Promise.resolve(products)
+            );
+            const result = await service.getProductList(randomLimit, 0);
+
+            expect(result.length).toEqual(randomLimit);
+
+            expect(result).toMatchObject(products);
         });
     });
 });
