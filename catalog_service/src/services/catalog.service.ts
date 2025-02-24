@@ -1,11 +1,14 @@
 import { ICatalogRepository } from "../interface/catalogRepository.interface";
 
 export class CatalogService {
-    private _catalogRepository: ICatalogRepository;
+    private _repository: ICatalogRepository;
     constructor(private readonly catalogRepository: ICatalogRepository) {
-        this._catalogRepository = catalogRepository;
+        this._repository = catalogRepository;
     }
-    createProduct(data: any) {}
+    async createProduct(data: any) {
+        const result = await this._repository.create(data);
+        return result;
+    }
 
     updateProduct(data: any) {}
 

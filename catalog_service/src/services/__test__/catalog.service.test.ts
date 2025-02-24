@@ -19,7 +19,13 @@ describe("catalogService", () => {
         test("should create product", async () => {
             const service = new CatalogService(repository);
 
-            const result = await service.createProduct({});
+            const requestBody = {
+                name: "Phone",
+                description: "This is good phone",
+                stock: 100,
+                price: 100,
+            };
+            const result = await service.createProduct(requestBody);
             expect(result).toMatchObject({
                 id: expect.any(Number),
                 name: expect.any(String),
