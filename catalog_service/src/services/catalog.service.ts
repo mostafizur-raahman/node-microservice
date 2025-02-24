@@ -7,14 +7,21 @@ export class CatalogService {
     }
     async createProduct(data: any) {
         const result = await this._repository.create(data);
+        if (!result.id) {
+            throw new Error("unable to create product");
+        }
         return result;
     }
 
-    updateProduct(data: any) {}
+    async updateProduct(data: any) {
+        const result = await this._repository.update(data);
+        //TODO: emit to update record on Elastic search
+        return data;
+    }
 
-    deleteProduct(id: number) {}
+    async deleteProduct(id: number) {}
 
-    getProductList(limit: number, offset: number) {}
+    async getProductList(limit: number, offset: number) {}
 
-    getProductById(id: number) {}
+    async getProductById(id: number) {}
 }
